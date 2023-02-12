@@ -70,16 +70,22 @@ function Question({ question, handleOptionSelected }) {
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <p>Question {question.questionNumber + 1} of 10: Which is bigger?</p>
-      <p>
-        <button style={{ padding: '10px 20px', margin: 10 }} onClick={() => handleOptionSelected(question.usState)}>{question.usState.name}</button>
-        <button style={{ padding: '10px 20px', margin: 10 }} onClick={() => handleOptionSelected(question.country)}>{question.country.name}</button>
-      </p>
+      <div style={{display: 'flex', justifyContent: 'center'}}>
+        <div>
+          <p style={{margin: 0}}>US State</p>
+          <button style={{ padding: '10px 20px', margin: 10 }} onClick={() => handleOptionSelected(question.usState)}>{question.usState.name}</button>
+        </div>
+        <div>
+          <p style={{margin: 0}}>Country</p>
+          <button style={{ padding: '10px 20px', margin: 10 }} onClick={() => handleOptionSelected(question.country)}>{question.country.name}</button>
+        </div>
+      </div>
     </div>
   );
 }
 
 function Result({ score, answers }) {
-  const tweet = `I scored ${score} out of 10 on this quiz! Can you do better? #quiz #score https://area-quiz.netlify.app`;
+  const tweet = `I scored ${score} out of 10 on this quiz! Can you do better? #areaquiz made by @dk_fakegod https://area-quiz.netlify.app`;
   const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>

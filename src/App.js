@@ -79,13 +79,17 @@ function Question({ question, handleOptionSelected }) {
 }
 
 function Result({ score, answers }) {
+  const tweet = `I scored ${score} out of 10 on this quiz! Can you do better? #quiz #score https://area-quiz.netlify.app`;
+  const tweetUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweet)}`;
   return (
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <p>Your score: {score} out of 10</p>
+      <button onClick={() => window.open(tweetUrl, '_blank')}>Share on Twitter</button>
       <p>Correct answers:</p>
       {answers.map((answer, index) => (
         <p key={index} style={{ color: answer.isCorrect ? 'green' : 'red' }}>Question {index + 1}: {answer.name}</p>
       ))}
+
     </div>
   );
 }
